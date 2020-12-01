@@ -1,0 +1,10 @@
+/* TEAM */
+    Developer: Fco Javier Ramos Oliver
+    Company: Fortes and Co.
+    Website: www.fortesand.co
+    Contact: fj.ramosoliver@gmail.com / javier@fortesand.co
+
+/* SITE */
+    Language: English
+    Doctype:HTML5
+    IDE: Sublime Text, Photoshop

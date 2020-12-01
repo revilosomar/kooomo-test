@@ -1,0 +1,91 @@
+  header.header {
+    color: $white;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid $grey;
+    z-index: 990;
+    .mobile-menu {
+      background-color: $white;
+      transition: right .8s linear;
+      height: calc(100% - 102px);
+      right: -306px;
+      overflow: auto;
+      position: fixed;
+      top: 102px;
+      width: 306px;
+      z-index: 999;
+      .navbar-mobile {
+        ul {
+          list-style: none;
+          padding: 0;
+          li {
+            border-bottom: 1px solid $grey;
+            a {
+              color: $black;
+              text-decoration: none;
+              display: block;
+              padding: 7px 15px;
+            }
+          }
+        }
+      }
+    }// End mobile.menu
+    .top-header {
+      background-color: $black;
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 10px 0;
+      a {
+        color: $white;
+        &.top-link {
+          text-decoration: underline;
+        }
+      }
+      ul {
+        list-style: none;
+        margin-bottom: 0;
+      }
+      .menu-language {
+        float: right;
+        > li {
+          float: left;
+          position: relative;
+          >a {
+            padding: 10px;
+            height: 32px;
+          }
+        }
+        .fa-caret-down {
+          font-size: 10px;
+          padding-left: 5px;
+        }
+        .language-selector {
+          text-align: center;
+        }
+        .country-selector {
+          height: calc(100vh - 21px);
+          overflow-y: auto;
+          padding-left: 10px;
+          margin-right: -15px;
+        }
+      }
+    }//End top-header
+    .navbar-header {
+      .logo {
+        display: block;
+        height: 100%;
+        padding: 20px 0;
+        img {
+          width: 250px;
+          height: auto;
+        }
+      }
+    }// End navbar-header
+    .search {
+      position: absolute;
+      right: -600px;
+      width: 600px;
+      height: 400px;
+    }
+  }// End header.header

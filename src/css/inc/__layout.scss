@@ -1,0 +1,199 @@
+body {
+
+  @include primaryFont(16px, 400);
+
+  .content {
+    .breadcrums {
+      padding: 122px 0 10px 0;
+    }
+    .hero {
+      background: transparent url('../images/css/bg-valentino-rossi.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 60px 40px;
+      color: $white;
+    }
+
+    .filters {
+      text-transform: uppercase;
+      align-items: center;
+      .items {
+        margin-bottom: 0;
+        font-weight: 800;
+      }
+      .grid-elements {
+        text-align: center;
+        .change-grid {
+          padding: 0 10px;
+          span {
+            border: 1px solid $grey;
+            background-color: $grey;
+            display: inline-block;
+            width: 5px;
+            height: 10px;
+          }
+          &.active {
+            span {
+              border: 1px solid $black;
+              background-color: $black;
+            }
+          }
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      .wrap-sort {
+        text-align: center;
+        position: relative;
+        .sort {
+          color: $grey;
+          padding-right: 8%;
+        }
+        .select-sort {
+          color: $black;
+          position: relative;
+          .fa {
+            position: absolute;
+            display: inline-block;
+            font: normal normal normal 26px/1 "FontAwesome";
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            content: "\f106";
+            top: -2px;
+            right: -20px;
+            text-decoration: none;
+            text-align: center;
+          }
+          .fa-angle-up {
+            display: none;
+          }
+        }
+        .sort-submenu {
+          width: 100%;
+          text-align: center;
+          //text-transform: none;
+        }
+      }// End wrap-sort
+
+    }// End filters
+
+  } // End content
+
+  footer.footer {
+    color: $white;
+    background: $footer_color;
+    padding: 50px 0;
+    font-size: 14px;
+    .logo-footer {
+      width: 315px;
+      height: auto;
+      margin-bottom: 40px;
+    }
+    h2 {
+      @include secondaryFont(52px, 400);
+      margin-bottom: 40px;
+      line-height: 0.7em;
+      top: -6px;
+      position: relative;
+    }
+    h4 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      min-height: 21px;
+      &.text-suscribe {
+        text-transform: none;
+      }
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        margin-bottom: 20px;
+      }
+    }
+    a {
+      color:#fff;
+    }
+    .form-input {
+      width: 60%;
+      background-color: $form_input_bg;
+      border-radius: 30px;
+      padding: 0 10px 0 15px;
+      height: 50px;
+      color: $white;
+      border: 0;
+      caret-color: $white;
+      &:focus {
+        outline: 0;
+        background-color: lighten($form_input_bg, 5%)
+      }
+    }
+
+    .wrap-btn {
+      display: inline-block;
+      position: relative;
+      left: -40px;
+      top: 0;
+      .btn-with-icon {
+        background: url('../images/css/btn-arrow.png') no-repeat 90% 50%,
+        linear-gradient(0deg,rgba(104,24,17,1) 0,rgba(182,39,25,1) 100%);
+        background-size: 50px, cover;
+        position: relative;
+        top: -2px;
+      }
+    }
+
+    .flag-logo {
+      width: 250px;
+      text-align: center;
+      display: block;
+      margin: 40px auto;
+    }
+
+    .footer-bar {
+      border-top: 1px solid $darker_grey;
+      padding-top: 45px;
+      p {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+      .wrap-pay {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      img.logo-pay {
+        width: 80px;
+        height: auto;
+        filter: grayscale(1);
+        align-self: center;
+        padding: 0 10px;
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      .right-links {
+        float: right;
+        padding-right: 20px;
+        a {
+          padding: 10px;
+          &:first-child {
+            padding-left: 0;
+          }
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+  } // footer
+
+}

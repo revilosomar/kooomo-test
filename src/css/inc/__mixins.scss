@@ -1,0 +1,12 @@
+ /*
+  Example of use:
+  @include primaryFont(16px);
+  @include primaryFont(16px, 700);
+*/
+@mixin primaryFont($fontSize: inherit, $fontWeight: 400) {
+  font: $fontWeight $fontSize 'MotoGPText', Arial, sans-serif;
+}
+
+@mixin secondaryFont($fontSize: inherit, $fontWeight: 400) {
+  font: $fontWeight $fontSize 'MotoGPDisplay', Arial, sans-serif;
+}
