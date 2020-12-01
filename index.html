@@ -161,16 +161,20 @@
         </form>
       </div>
       <script id="search-template" type="text/x-handlebars-template">
-        {{#each this}}
-          <a class="link-product" href="{{url}}">
-            <img class="image-product" src="{{images.medium}}'" alt="{{name}}">
-            <div class="wrap-data">
-              <h2 class="article-title">{{name}}</h2>
-              <p class="price"><span class="normal-price">{{{price.currency_symbol}}} {{price.sell}}</span>{{{price.currency_symbol}}} {{price.to_discount}}
-              </p>
-            </div>
-          </a>
-        {{/each}}
+        <ul>
+          {{#each this}}
+            <li>
+              <a class="link-product" href="{{url}}">
+                <img class="image-product" src="{{images.medium}}" alt="{{name}}">
+                <div class="wrap-data">
+                  <h2 class="article-title">{{name}}</h2>
+                  <p class="price"><span class="normal-price">{{{price.currency_symbol}}} {{price.sell}}</span>{{{price.currency_symbol}}} {{price.to_discount}}
+                  </p>
+                </div>
+              </a>
+            <li>
+          {{/each}}
+        </ul>
       </script>
       <div class="search-result">
       </div>

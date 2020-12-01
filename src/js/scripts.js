@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
   var productsAPI = 'http://interviews-env.b8amvayt6w.eu-west-1.elasticbeanstalk.com/products';
@@ -7,14 +6,18 @@ $(document).ready(function(){
 
   var allproductsJSONData;
 
+  var templateSourceHandlebars;
+
+  var locationProductsShop = $('.wrapper-articles');
+
   /*JSON get Products*/
   $.getJSON( productsAPI, function( data ) {
-      allproductsJSONData = data;
-     showNumberOfItems( data.length );
-     insertDataHandlebars( data );
+    allproductsJSONData = data;
+    showNumberOfItems( allproductsJSONData.length );
+    templateSourceHandlebars = $("#product-template").html();
+    insertDataHandlebars( allproductsJSONData, templateSourceHandlebars, locationProductsShop );
 
-  })
-  .always( () => $('.loading').fadeOut(1000) );
+  }).always( () => $('.loading').fadeOut(1000) );
 
   function showNumberOfItems( itemNumber ) {
     $('.item-count').text(itemNumber);
@@ -22,7 +25,7 @@ $(document).ready(function(){
 
   /*Handlebars*/
 
-  function insertDataHandlebars( dataJSON ) {
+  function insertDataHandlebars( dataJSON, source, locationToInsert ) {
 
     Handlebars.registerHelper('roundDiscount', function(str){
       return Math.abs( parseInt( str ) );
@@ -33,7 +36,7 @@ $(document).ready(function(){
     });
 
     // Grab the template script
-    var theTemplateScript = $("#product-template").html();
+    var theTemplateScript = source;
 
     // Compile the template
     var theTemplate = Handlebars.compile(theTemplateScript);
@@ -42,83 +45,18 @@ $(document).ready(function(){
     var theCompiledHtml = theTemplate(dataJSON);
 
     // Add the compiled html to the page
-    $('.wrapper-articles').append(theCompiledHtml);
+    locationToInsert.append(theCompiledHtml);
   }
-
-
-  // function createGridElement( discountPercentage,
-  //                             linkProduct,
-  //                             firstImage,
-  //                             secondImage,
-  //                             productTitle,
-  //                             currencySymbol,
-  //                             normalPrice,
-  //                             discountedPrice ) {
-  //   let addFirstImage, addSecondImage;
-
-  //   if(firstImage) {
-  //     addFirstImage = '<img class="image-product" src="'+firstImage+'" alt="'+productTitle+'">';
-  //   }
-
-  //   if(secondImage) {
-  //     addSecondImage = '<img class="image-product" src="'+secondImage+'" alt="'+productTitle+'">';
-  //   }
-
-  //   if(!firstImage) {
-  //     addFirstImage = addSecondImage;
-  //   }
-
-  //   if(!secondImage) {
-  //     addSecondImage = addFirstImage;
-  //   }
-
-  //   let gridElement = '<div class="col-sm-12 col-md-6 col-lg-3">'+
-  //       '<div class="article">'+
-  //         '<a class="add-favorite" href="#">'+
-  //         '<img src="assets/images/html/fav-heart.svg" alt="add favorite"></a>'+
-  //         '<span class="percent-discount">'+discountPercentage+'%</span>'+
-  //         '<a class="link-product" href="'+linkProduct+'">'+
-  //           addFirstImage+
-  //           addSecondImage+
-  //         '</a>'+
-  //         '<a class="link-product" href="'+linkProduct+'"><h2 class="article-title">'+productTitle+'</h2></a>'+
-  //         '<p class="price"><span class="normal-price">'+
-  //         currencySymbol+' '+normalPrice+'</span>'+currencySymbol+' '+discountedPrice+'</p>'+
-  //       '</div>'+
-  //     '</div>';
-
-  //     return gridElement;
-  // }
-
-  // function showData( data ) {
-
-  //  for(let i = 0; i < data.length; i++) {
-  //     let discountNumber = Math.abs( data[i].promotions.applied[ Object.keys( data[i].promotions.applied ) ].discount_percentage);
-  //     $('.wrapper-articles').append(
-  //       createGridElement(
-  //         discountNumber,
-  //         data[i].url,
-  //         data[i].images.medium,
-  //         data[i].images.firstmedium,
-  //         data[i].name,
-  //         data[i].price.currency_symbol,
-  //         data[i].price.to_discount,
-  //         data[i].price.sell
-  //         )
-  //       );
-  //  }
-
-  // }
 
   function changeGrid( cellNumber ) {
 
     let articles = document.querySelector('.wrapper-articles').children;
 
     for (let i = 0; i < articles.length; i++) {
-        if (cellNumber === 3 ) {
-          articles[i].classList.add('col-lg-4');
-          articles[i].classList.remove('col-lg-3');
-        } else if ( cellNumber === 4) {
+      if (cellNumber === 3 ) {
+        articles[i].classList.add('col-lg-4');
+        articles[i].classList.remove('col-lg-3');
+      } else if ( cellNumber === 4) {
         articles[i].classList.add('col-lg-3');
         articles[i].classList.remove('col-lg-4');
       }
@@ -126,19 +64,19 @@ $(document).ready(function(){
   }
 
   /*Search*/
-  function createSearchHTMLStructure (linkProduct,
-                                      productTitle,
-                                      imageProduct,
-                                      currencySymbol,
-                                      normalPrice,
-                                      discountedPrice) {
-    let elementSearch ='<a class="link-product" href="'+linkProduct+'">'+
-          '<img class="image-product" src="'+imageProduct+'" alt="'+productTitle+'">'+
-          '<div class="wrap-data"><h2 class="article-title">'+productTitle+'</h2>'+
-          '<p class="price"><span class="normal-price">'+
-          currencySymbol+' '+normalPrice+'</span>'+currencySymbol+' '+discountedPrice+'</p></div></a>';
-    return elementSearch;
-  }
+  // function createSearchHTMLStructure (linkProduct,
+  //   productTitle,
+  //   imageProduct,
+  //   currencySymbol,
+  //   normalPrice,
+  //   discountedPrice) {
+  //   let elementSearch ='<a class="link-product" href="'+linkProduct+'">'+
+  //   '<img class="image-product" src="'+imageProduct+'" alt="'+productTitle+'">'+
+  //   '<div class="wrap-data"><h2 class="article-title">'+productTitle+'</h2>'+
+  //   '<p class="price"><span class="normal-price">'+
+  //   currencySymbol+' '+normalPrice+'</span>'+currencySymbol+' '+discountedPrice+'</p></div></a>';
+  //   return elementSearch;
+  // }
 
   function getSearchInfo( searchValue ) {
     let searchString = searchCall+searchValue;
@@ -152,32 +90,22 @@ $(document).ready(function(){
 
       if ( data.length === 0 ) {
         let pElement = document.createElement( 'p' );
-        pElement.appendChild( document.createTextNode("Nothing found") );
+        pElement.classList.add('alert-light', 'text-center');
+        pElement.appendChild( document.createTextNode("Nothing found...") );
         searchStructure.append( pElement );
       } else {
-        let ulElement = document.createElement( 'ul' );
-        for(let i = 0; i < data.length; i++) {
-          let liElement = document.createElement( 'li' );
-          liElement.insertAdjacentHTML('beforeend', createSearchHTMLStructure(
-          data[i].url,
-          data[i].name,
-          data[i].images.medium,
-          data[i].price.currency_symbol,
-          data[i].price.to_discount,
-          data[i].price.sell ) );
-          ulElement.append( liElement );
-        }
-         searchStructure.append( ulElement );
-        }//End Else
+         let templateSourceHandlebarsSearch = $("#search-template").html();
+        insertDataHandlebars( data, templateSourceHandlebarsSearch, searchStructure);
+      }//End Else
     });
   }
 
-/*Clicks*/
+  /*Clicks*/
 
   $( '#search-form-header button' ).on( 'click', function( event ) {
-      let searchInput = $('#search-term');
-      getSearchInfo( searchInput.val() );
-      event.preventDefault();
+    let searchInput = $('#search-term');
+    getSearchInfo( searchInput.val() );
+    event.preventDefault();
   });
 
   $( '#mobile-button' ).on( 'click', function( event ) {
@@ -192,8 +120,8 @@ $(document).ready(function(){
 
   $(document).on('click', function (e) {
     if ($(e.target).closest('.language-button').length === 0) {
-        $('.language-selector').removeClass('show');
-      }
+      $('.language-selector').removeClass('show');
+    }
   });
 
   $( '.shipping-button' ).on( 'click', function( event ) {
@@ -203,7 +131,7 @@ $(document).ready(function(){
 
   $(document).on('click', function (e) {
     if ($(e.target).closest('.shipping-button').length === 0) {
-        $('.country-selector').removeClass('show');
+      $('.country-selector').removeClass('show');
     }
   });
 
@@ -236,71 +164,71 @@ $(document).ready(function(){
   });
 
   $( '.select-sort' ).on( 'click', function( event ) {
-      $('.sort-submenu').toggleClass( 'show' );
+    $('.sort-submenu').toggleClass( 'show' );
     event.preventDefault();
   });
 
-    $(document).on('click', function (e) {
-      if ($(e.target).closest('.select-sort').length === 0) {
-          $('.sort-submenu').removeClass('show');
-      }
+  $(document).on('click', function (e) {
+    if ($(e.target).closest('.select-sort').length === 0) {
+      $('.sort-submenu').removeClass('show');
+    }
   });
 
-    $( '.sort-name-asc' ).on( 'click', function( event ) {
-      if( allproductsJSONData ) {
-        $('.wrapper-articles').empty();
-        allproductsJSONData.sort( (a, b) => a.name.localeCompare(b.name) );
-        insertDataHandlebars(allproductsJSONData);
-      }
-      event.preventDefault();
+  $( '.sort-name-asc' ).on( 'click', function( event ) {
+    if( allproductsJSONData ) {
+      $('.wrapper-articles').empty();
+      allproductsJSONData.sort( (a, b) => a.name.localeCompare(b.name) );
+      insertDataHandlebars(allproductsJSONData, templateSourceHandlebars, locationProductsShop);
+    }
+    event.preventDefault();
   });
 
-    $( '.sort-name-desc' ).on( 'click', function( event ) {
-      if( allproductsJSONData ) {
-        $('.wrapper-articles').empty();
-        allproductsJSONData.sort( (a, b) => b.name.localeCompare(a.name) );
-        insertDataHandlebars(allproductsJSONData);
-      }
-      event.preventDefault();
+  $( '.sort-name-desc' ).on( 'click', function( event ) {
+    if( allproductsJSONData ) {
+      $('.wrapper-articles').empty();
+      allproductsJSONData.sort( (a, b) => b.name.localeCompare(a.name) );
+      insertDataHandlebars(allproductsJSONData, templateSourceHandlebars, locationProductsShop);
+    }
+    event.preventDefault();
   });
 
-    $( '.sort-price-high' ).on( 'click', function( event ) {
-      if( allproductsJSONData ) {
-        $('.wrapper-articles').empty();
-        allproductsJSONData.sort( (a, b) => b.price.sell - a.price.sell );
-        insertDataHandlebars(allproductsJSONData);
-      }
-      event.preventDefault();
+  $( '.sort-price-high' ).on( 'click', function( event ) {
+    if( allproductsJSONData ) {
+      $('.wrapper-articles').empty();
+      allproductsJSONData.sort( (a, b) => b.price.sell - a.price.sell );
+      insertDataHandlebars(allproductsJSONData, templateSourceHandlebars, locationProductsShop);
+    }
+    event.preventDefault();
   });
 
-    $( '.sort-price-low' ).on( 'click', function( event ) {
-      if( allproductsJSONData ) {
-        $('.wrapper-articles').empty();
-        allproductsJSONData.sort( (a, b) => a.price.sell - b.price.sell );
-        insertDataHandlebars(allproductsJSONData);
-      }
-      event.preventDefault();
+  $( '.sort-price-low' ).on( 'click', function( event ) {
+    if( allproductsJSONData ) {
+      $('.wrapper-articles').empty();
+      allproductsJSONData.sort( (a, b) => a.price.sell - b.price.sell );
+      insertDataHandlebars(allproductsJSONData, templateSourceHandlebars);
+    }
+    event.preventDefault();
   });
 
   /*Scrolling*/
 
-    $(document).scroll(function () {
-      var scrollYSize = $(this).scrollTop();
+  $(document).scroll(function () {
+    var scrollYSize = $(this).scrollTop();
 
-      if (scrollYSize > 100) {
-          $('.anchor-up').show();
-      } else {
-          $('.anchor-up').hide();
-      }
-    });
+    if (scrollYSize > 100) {
+      $('.anchor-up').show();
+    } else {
+      $('.anchor-up').hide();
+    }
+  });
 
-    $( '.anchor-up' ).on( 'click', function( event ) {
+  $( '.anchor-up' ).on( 'click', function( event ) {
 
-      $('html, body').animate({
-       scrollTop: $('body').offset().top
-      }, 1200);
+    $('html, body').animate({
+      scrollTop: $('body').offset().top
+    }, 1200);
 
-      event.preventDefault();
+    event.preventDefault();
   });
 
 });
