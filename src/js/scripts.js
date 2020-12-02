@@ -23,8 +23,6 @@ $(document).ready(function(){
     $('.item-count').text(itemNumber);
   }
 
-  /*Handlebars*/
-
   function insertDataHandlebars( dataJSON, source, locationToInsert ) {
 
     Handlebars.registerHelper('roundDiscount', function(str){
@@ -35,16 +33,12 @@ $(document).ready(function(){
       return value !== undefined;
     });
 
-    // Grab the template script
-    var theTemplateScript = source;
+    let theTemplateScript = source;
 
-    // Compile the template
-    var theTemplate = Handlebars.compile(theTemplateScript);
+    let theTemplate = Handlebars.compile(theTemplateScript);
 
-    // Pass our data to the template
-    var theCompiledHtml = theTemplate(dataJSON);
+    let theCompiledHtml = theTemplate(dataJSON);
 
-    // Add the compiled html to the page
     locationToInsert.append(theCompiledHtml);
   }
 
@@ -62,21 +56,6 @@ $(document).ready(function(){
       }
     }
   }
-
-  /*Search*/
-  // function createSearchHTMLStructure (linkProduct,
-  //   productTitle,
-  //   imageProduct,
-  //   currencySymbol,
-  //   normalPrice,
-  //   discountedPrice) {
-  //   let elementSearch ='<a class="link-product" href="'+linkProduct+'">'+
-  //   '<img class="image-product" src="'+imageProduct+'" alt="'+productTitle+'">'+
-  //   '<div class="wrap-data"><h2 class="article-title">'+productTitle+'</h2>'+
-  //   '<p class="price"><span class="normal-price">'+
-  //   currencySymbol+' '+normalPrice+'</span>'+currencySymbol+' '+discountedPrice+'</p></div></a>';
-  //   return elementSearch;
-  // }
 
   function getSearchInfo( searchValue ) {
     let searchString = searchCall+searchValue;
@@ -96,7 +75,7 @@ $(document).ready(function(){
       } else {
          let templateSourceHandlebarsSearch = $("#search-template").html();
         insertDataHandlebars( data, templateSourceHandlebarsSearch, searchStructure);
-      }//End Else
+      }
     });
   }
 
@@ -113,13 +92,19 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
+  $(document).on('click', function ( event ) {
+    if ($(event.target).closest('.mobile-menu').length === 0 && $(event.target).parent().get(0).id !=='mobile-button') {
+      $('.mobile-menu').removeClass('open-element');
+    }
+  });
+
   $( '.language-button' ).on( 'click', function( event ) {
     $('.language-selector').toggleClass('show');
     event.preventDefault();
   });
 
-  $(document).on('click', function (e) {
-    if ($(e.target).closest('.language-button').length === 0) {
+  $(document).on('click', function ( event ) {
+    if ($(event.target).closest('.language-button').length === 0) {
       $('.language-selector').removeClass('show');
     }
   });
@@ -129,8 +114,8 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
-  $(document).on('click', function (e) {
-    if ($(e.target).closest('.shipping-button').length === 0) {
+  $(document).on('click', function ( event ) {
+    if ($(event.target).closest('.shipping-button').length === 0) {
       $('.country-selector').removeClass('show');
     }
   });
@@ -143,6 +128,12 @@ $(document).ready(function(){
   $( '.search-close' ).on( 'click', function( event ) {
     $('.search').removeClass('open-element');
     event.preventDefault();
+  });
+
+  $(document).on('click', function ( event ) {
+    if ($(event.target).closest('.search').length === 0 && $(event.target).parent().get(0).id !=='button-search') {
+      $('.search').removeClass('open-element');
+    }
   });
 
   $( '.four-elements' ).on( 'click', function( event ) {

@@ -30,6 +30,10 @@ header.header {
           text-decoration: none;
           display: block;
           padding: 7px 15px; }
+        header.header .mobile-menu .navbar-mobile ul li ul {
+          position: static;
+          float: none;
+          box-shadow: none; }
   header.header .top-header {
     background-color: #000;
     font-size: 12px;
@@ -167,6 +171,7 @@ nav.navbar {
       right: 8px;
       text-align: center; }
   .right-nav .images {
+    display: block;
     height: 30px;
     width: auto; }
 
@@ -364,6 +369,94 @@ nav.navbar {
   border: 1px solid grey;
   border-radius: 0; }
 
+footer.footer {
+  color: #fff;
+  background: #1d1d1d;
+  padding: 50px 0;
+  font-size: 14px; }
+  footer.footer .logo-footer {
+    width: 315px;
+    height: auto;
+    margin-bottom: 40px; }
+  footer.footer h2 {
+    font: 400 52px "MotoGPDisplay", Arial, sans-serif;
+    margin-bottom: 40px;
+    line-height: 0.7em;
+    top: -6px;
+    position: relative; }
+  footer.footer h4 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    min-height: 21px; }
+    footer.footer h4.text-suscribe {
+      text-transform: none; }
+  footer.footer ul {
+    list-style: none;
+    padding: 0; }
+    footer.footer ul li {
+      margin-bottom: 20px; }
+  footer.footer a {
+    color: #fff; }
+  footer.footer .form-input {
+    width: 60%;
+    background-color: #2b292a;
+    border-radius: 30px;
+    padding: 0 10px 0 15px;
+    height: 50px;
+    color: #fff;
+    border: 0;
+    caret-color: #fff; }
+    footer.footer .form-input:focus {
+      outline: 0;
+      background-color: #383537; }
+  footer.footer .wrap-btn {
+    display: inline-block;
+    position: relative;
+    left: -40px;
+    top: 0; }
+    footer.footer .wrap-btn .btn-with-icon {
+      background: url("../images/css/btn-arrow.png") no-repeat 90% 50%, linear-gradient(0deg, #681811 0, #b62719 100%);
+      background-size: 50px, cover;
+      position: relative;
+      top: -2px; }
+  footer.footer .flag-logo {
+    width: 250px;
+    text-align: center;
+    display: block;
+    margin: 40px auto; }
+  footer.footer .footer-bar {
+    border-top: 1px solid #2a2a2a;
+    padding-top: 45px; }
+    footer.footer .footer-bar p {
+      display: inline-block;
+      margin-bottom: 0; }
+    footer.footer .footer-bar .wrap-pay {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; }
+    footer.footer .footer-bar img.logo-pay {
+      width: 80px;
+      height: auto;
+      filter: grayscale(1);
+      align-self: center;
+      padding: 0 10px; }
+      footer.footer .footer-bar img.logo-pay:first-child {
+        padding-left: 0; }
+      footer.footer .footer-bar img.logo-pay:last-child {
+        padding-right: 0; }
+    footer.footer .footer-bar .right-links {
+      float: right;
+      padding-right: 20px; }
+      footer.footer .footer-bar .right-links a {
+        padding: 10px; }
+        footer.footer .footer-bar .right-links a:first-child {
+          padding-left: 0; }
+        footer.footer .footer-bar .right-links a:last-child {
+          padding-right: 0; }
+
 body {
   font: 400 16px "MotoGPText", Arial, sans-serif; }
   body .content .breadcrums {
@@ -420,93 +513,6 @@ body {
       body .content .filters .wrap-sort .sort-submenu {
         width: 100%;
         text-align: center; }
-  body footer.footer {
-    color: #fff;
-    background: #1d1d1d;
-    padding: 50px 0;
-    font-size: 14px; }
-    body footer.footer .logo-footer {
-      width: 315px;
-      height: auto;
-      margin-bottom: 40px; }
-    body footer.footer h2 {
-      font: 400 52px "MotoGPDisplay", Arial, sans-serif;
-      margin-bottom: 40px;
-      line-height: 0.7em;
-      top: -6px;
-      position: relative; }
-    body footer.footer h4 {
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      min-height: 21px; }
-      body footer.footer h4.text-suscribe {
-        text-transform: none; }
-    body footer.footer ul {
-      list-style: none;
-      padding: 0; }
-      body footer.footer ul li {
-        margin-bottom: 20px; }
-    body footer.footer a {
-      color: #fff; }
-    body footer.footer .form-input {
-      width: 60%;
-      background-color: #2b292a;
-      border-radius: 30px;
-      padding: 0 10px 0 15px;
-      height: 50px;
-      color: #fff;
-      border: 0;
-      caret-color: #fff; }
-      body footer.footer .form-input:focus {
-        outline: 0;
-        background-color: #383537; }
-    body footer.footer .wrap-btn {
-      display: inline-block;
-      position: relative;
-      left: -40px;
-      top: 0; }
-      body footer.footer .wrap-btn .btn-with-icon {
-        background: url("../images/css/btn-arrow.png") no-repeat 90% 50%, linear-gradient(0deg, #681811 0, #b62719 100%);
-        background-size: 50px, cover;
-        position: relative;
-        top: -2px; }
-    body footer.footer .flag-logo {
-      width: 250px;
-      text-align: center;
-      display: block;
-      margin: 40px auto; }
-    body footer.footer .footer-bar {
-      border-top: 1px solid #2a2a2a;
-      padding-top: 45px; }
-      body footer.footer .footer-bar p {
-        display: inline-block;
-        margin-bottom: 0; }
-      body footer.footer .footer-bar .wrap-pay {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap; }
-      body footer.footer .footer-bar img.logo-pay {
-        width: 80px;
-        height: auto;
-        filter: grayscale(1);
-        align-self: center;
-        padding: 0 10px; }
-        body footer.footer .footer-bar img.logo-pay:first-child {
-          padding-left: 0; }
-        body footer.footer .footer-bar img.logo-pay:last-child {
-          padding-right: 0; }
-      body footer.footer .footer-bar .right-links {
-        float: right;
-        padding-right: 20px; }
-        body footer.footer .footer-bar .right-links a {
-          padding: 10px; }
-          body footer.footer .footer-bar .right-links a:first-child {
-            padding-left: 0; }
-          body footer.footer .footer-bar .right-links a:last-child {
-            padding-right: 0; }
 
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */

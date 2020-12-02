@@ -27,6 +27,11 @@
               display: block;
               padding: 7px 15px;
             }
+            ul {
+              position: static;
+              float: none;
+              box-shadow: none;
+            }
           }
         }
       }
