@@ -77,6 +77,7 @@ module.exports = function(grunt) {
         files: {
           'assets/js/jquery-3.1.1.min.js': 'src/js/copy/jquery-3.1.1.min.js',
           'assets/js/bootstrap.min.js': 'src/js/copy/bootstrap.min.js',
+          'assets/js/bootstrap.min.js.map': 'src/js/copy/bootstrap.min.js.map',
         }
       }
     },

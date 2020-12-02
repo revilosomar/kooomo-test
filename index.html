@@ -38,17 +38,42 @@
 
 </head>
 <body>
+
   <header class="header">
+
     <div class="mobile-menu">
       <nav class="navbar-mobile">
         <ul>
-          <li><a href="#">MotoGP™ FANS</a>
-          <li><a href="#">MOTORCYCLE BRANDS</a></li>
+          <li class="have-submenu"><a href="#">MotoGP™ FANS</a>
+            <ul class="submenu-dropdown">
+              <li><a href="#">Valentino Rossi</a></li>
+              <li><a href="#">Danilo Petrucci</a></li>
+              <li><a href="#">Franco Morbidelli</a></li>
+              <li><a href="#">Michelle Pirro</a></li>
+              <li><a href="#">Marc Marquez</a></li>
+              <li><a href="#">Alex Marquez</a></li>
+              <li><a href="#">Joan Mir</a></li>
+              <li><a href="#">Alex Rins</a></li>
+            </ul>
+          </li>
+          <li class="have-submenu"><a href="#">MOTORCYCLE BRANDS</a>
+            <ul class="submenu-dropdown">
+              <li><a href="#">Valentino Rossi</a></li>
+              <li><a href="#">Danilo Petrucci</a></li>
+              <li><a href="#">Franco Morbidelli</a></li>
+              <li><a href="#">Michelle Pirro</a></li>
+              <li><a href="#">Marc Marquez</a></li>
+              <li><a href="#">Alex Marquez</a></li>
+              <li><a href="#">Joan Mir</a></li>
+              <li><a href="#">Alex Rins</a></li>
+            </ul>
+          </li>
           <li><a href="#">eSPORTS</a></li>
           <li><a href="#">Black Friday 2020</a></li>
         </ul>
       </nav>
     </div>
+
     <div class="top-header">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -76,6 +101,7 @@
         </div>
       </div>
     </div><!--End top-header -->
+
     <div class="navbar-header">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -152,6 +178,7 @@
         </div>
       </div>
     </div><!-- End nav-header -->
+
     <div class="search">
       <div class="wrap-search-form">
         <a class="search-close" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -160,28 +187,14 @@
           <button class="btn btn-only-icon" name="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
       </div>
-      <script id="search-template" type="text/x-handlebars-template">
-        <ul>
-          {{#each this}}
-            <li>
-              <a class="link-product" href="{{url}}">
-                <img class="image-product" src="{{images.medium}}" alt="{{name}}">
-                <div class="wrap-data">
-                  <h2 class="article-title">{{name}}</h2>
-                  <p class="price"><span class="normal-price">{{{price.currency_symbol}}} {{price.sell}}</span>{{{price.currency_symbol}}} {{price.to_discount}}
-                  </p>
-                </div>
-              </a>
-            <li>
-          {{/each}}
-        </ul>
-      </script>
       <div class="search-result">
       </div>
     </div>
+
   </header>
 
   <div class="content">
+
     <div class="breadcrums">
       <div class="container-fluid">
         <div class="row">
@@ -229,7 +242,7 @@
         </div>
          <div class="col-md-4 col-lg-3 col-xl-2 px-0 py-3 border-grey h-55">
           <div class="wrap-sort">
-            <span class="sort">Sort by</span><a class="select-sort" href="#">default sorting<i class="fa fa-angle-up" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+            <span class="sort">Sort by</span><a class="select-sort" href="#">default sorting<i class="fa fa-angle-down" aria-hidden="true"></i></a>
             <ul class="submenu-dropdown sort-submenu">
               <li><a class="sort-name-asc" href="#">Name(A-Z)</a></li>
               <li><a class="sort-name-desc" href="#">Name(Z-A)</a></li>
@@ -241,36 +254,9 @@
         </div>
       </div>
 
-      <script id="product-template" type="text/x-handlebars-template">
-        {{#each this}}
-        <div class="col-sm-12 col-md-6 col-lg-3">
-          <div class="article">
-            <a class="add-favorite" href="#"><img src="assets/images/html/fav-heart.svg" alt="add favorite"></a>
-            <span class="percent-discount">
-              {{#each promotions.applied as |main-category|}}
-                  {{roundDiscount main-category.discount_percentage}}
-              {{/each}}%</span>
-            <a class="link-product" href="{{url}}">
-              <img class="image-product" src="{{images.medium}}" alt="{{name}}">
-              <img class="image-product" src="
-                {{#if (isdefined images.firstmedium)}}
-                  {{images.firstmedium}}
-                {{else}}
-                  {{images.medium}}
-                {{/if}}" alt="{{name}}">
-            </a>
-            <a class="link-product" href="{{url}}"><h2 class="article-title">{{name}}</h2></a>
-            <p class="price"><span class="normal-price">{{{price.currency_symbol}}} {{price.sell}}</span>{{{price.currency_symbol}}} {{price.to_discount}}</p>
-          </div>
-        </div>
-       {{/each}}
-      </script>
-
       <div class="row wrapper-articles">
         <div class="loading"></div>
-
       </div><!-- row -->
-
     </div><!-- container-fluid -->
 
   </div> <!-- content -->
@@ -374,5 +360,45 @@
       font-style: normal;
   }
 </style>
+<script id="search-template" type="text/x-handlebars-template">
+  <ul>
+    {{#each this}}
+      <li>
+        <a class="link-product" href="{{url}}">
+          <img class="image-product" src="{{images.medium}}" alt="{{name}}">
+          <div class="wrap-data">
+            <h2 class="article-title">{{name}}</h2>
+            <p class="price"><span class="normal-price">{{{price.currency_symbol}}} {{price.sell}}</span>{{{price.currency_symbol}}} {{price.to_discount}}
+            </p>
+          </div>
+        </a>
+      <li>
+    {{/each}}
+  </ul>
+</script>
+<script id="product-template" type="text/x-handlebars-template">
+  {{#each this}}
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <div class="article">
+      <a class="add-favorite" href="#"><img src="assets/images/html/fav-heart.svg" alt="add favorite"></a>
+      <span class="percent-discount">
+        {{#each promotions.applied as |main-category|}}
+            {{roundDiscount main-category.discount_percentage}}
+        {{/each}}%</span>
+      <a class="link-product" href="{{url}}">
+        <img class="image-product" src="{{images.medium}}" alt="{{name}}">
+        <img class="image-product" src="
+          {{#if (isdefined images.firstmedium)}}
+            {{images.firstmedium}}
+          {{else}}
+            {{images.medium}}
+          {{/if}}" alt="{{name}}">
+      </a>
+      <a class="link-product" href="{{url}}"><h2 class="article-title">{{name}}</h2></a>
+      <p class="price"><span class="normal-price">{{{price.currency_symbol}}} {{price.sell}}</span>{{{price.currency_symbol}}} {{price.to_discount}}</p>
+    </div>
+  </div>
+ {{/each}}
+</script>
 </body>
 </html>

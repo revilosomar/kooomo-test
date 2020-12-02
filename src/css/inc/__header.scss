@@ -26,8 +26,22 @@
               text-decoration: none;
               display: block;
               padding: 7px 15px;
+              position: relative;
+            }
+            &.have-submenu {
+            > a:after {
+              content: "\f105";
+              font-family: "FontAwesome";
+              font-size: 23px;
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              color: $grey;
+              transform: translateY(-50%);
+              }
             }
             ul {
+              overflow-y: auto;
               position: static;
               float: none;
               box-shadow: none;

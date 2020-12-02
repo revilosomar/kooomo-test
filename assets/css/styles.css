@@ -29,8 +29,19 @@ header.header {
           color: #000;
           text-decoration: none;
           display: block;
-          padding: 7px 15px; }
+          padding: 7px 15px;
+          position: relative; }
+        header.header .mobile-menu .navbar-mobile ul li.have-submenu > a:after {
+          content: "\f105";
+          font-family: "FontAwesome";
+          font-size: 23px;
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          color: #a1a1a1;
+          transform: translateY(-50%); }
         header.header .mobile-menu .navbar-mobile ul li ul {
+          overflow-y: auto;
           position: static;
           float: none;
           box-shadow: none; }
@@ -503,13 +514,10 @@ body {
           font-style: normal;
           font-weight: 400;
           line-height: 1;
-          content: "\f106";
           top: -2px;
           right: -20px;
           text-decoration: none;
           text-align: center; }
-        body .content .filters .wrap-sort .select-sort .fa-angle-up {
-          display: none; }
       body .content .filters .wrap-sort .sort-submenu {
         width: 100%;
         text-align: center; }
@@ -572,7 +580,10 @@ body {
 @media only screen and (max-width: 575px) {
   body header.header .mobile-menu {
     height: calc(100% - 150px);
-    top: 150px; }
+    top: 150px;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh; }
   body header.header .navbar-header .logo img {
     display: block;
     margin: 0 auto; }

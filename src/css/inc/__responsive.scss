@@ -127,6 +127,9 @@
       .mobile-menu {
         height: calc(100% - 150px);
         top: 150px;
+        right: -100vw;
+        width: 100vw;
+        height: 100vh;
       }
       .navbar-header{
         .logo {
