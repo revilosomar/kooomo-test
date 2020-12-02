@@ -3,7 +3,7 @@ Kooomo test Frontend
 
 This is the test that Kooomo send me to test my knowledge of the most common Front-end skills like HTML, CSS, JavaScript and API consumption.
 
-I have use these tools to develop the test:
+I have used these tools to develop the test:
 
 1. Bootstrap 4
 2. Handlebars
